@@ -371,7 +371,7 @@ th {
   height: 100px;
   top: 0;
   left: calc(100% - 69px);
-  background: url("/img/test/test.png") no-repeat;
+  background: url("/Keksobooking/img/test/test.png") no-repeat;
   background-position: 0 0;
   background-size: 1370px 70px;
   transform: scale(-1, 1);
