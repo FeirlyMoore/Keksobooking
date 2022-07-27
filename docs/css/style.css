@@ -5,6 +5,11 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+/* Scrollbar
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 0; }
+
 html {
   font-family: sans-serif;
   /* 1 */
@@ -358,12 +363,6 @@ th {
   padding: 0; }
 
 .test-animation {
-  position: relative;
-  height: 100px;
-  width: 100vw;
-  box-sizing: border-box; }
-
-.test__inner {
   position: absolute;
   overflow: hidden;
   box-sizing: border-box;
@@ -375,7 +374,7 @@ th {
   background-position: 0 0;
   background-size: 1370px 70px;
   transform: scale(-1, 1);
-  animation: pony-trot 1s steps(21) infinite, pony-move 10s linear infinite, pony-scale 10s steps(1) infinite; }
+  animation: pony-trot 1s steps(21) infinite, pony-move 20s linear infinite, pony-scale 20s steps(1) infinite; }
 
 @keyframes pony-trot {
   100% {

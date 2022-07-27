@@ -1,25 +1,16 @@
 .test-animation {
-  position: relative;
-  height: 100px;
-  width: 100vw;
+  position: absolute;
+  overflow: hidden;
   box-sizing: border-box;
-}
-
-.test {
-  &__inner {
-    position: absolute;
-    overflow: hidden;
-    box-sizing: border-box;
-    width: 69px;
-    height: 100px;
-    top: 0;
-    left: calc(100% - 69px);
-    background: url("/img/test/test.png") no-repeat;
-    background-position: 0 0;
-    background-size: 1370px 70px;
-    transform: scale(-1, 1);
-    animation: pony-trot 1s steps(21) infinite, pony-move 10s linear infinite, pony-scale 10s steps(1) infinite;
-  }
+  width: 69px;
+  height: 100px;
+  top: 0;
+  left: calc(100% - 69px);
+  background: url("../img/test/test.png") no-repeat;
+  background-position: 0 0;
+  background-size: 1370px 70px;
+  transform: scale(-1, 1);
+  animation: pony-trot 1s steps(21) infinite, pony-move 20s linear infinite, pony-scale 20s steps(1) infinite;
 }
 
 @keyframes pony-trot {
