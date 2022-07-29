@@ -358,12 +358,13 @@ th {
 
 .pony {
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 0;
   width: 70px;
   height: 90px;
   overflow: hidden;
   box-sizing: border-box;
+  transform: scale(-1, 1);
   z-index: 100; }
 
 .animation--stand {
@@ -410,10 +411,6 @@ th {
   background: url("../img/pony/gif-pony-boop-lie__axi.gif") no-repeat;
   background-position: 0 0;
   background-size: 74px 70px; }
-
-@keyframes pony-scale {
-  50% {
-    transform: initial; } }
 
 /* Sprite-method */
 /* Общие стили. Каркас

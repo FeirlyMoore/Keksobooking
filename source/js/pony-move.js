@@ -8,13 +8,29 @@ window.addEventListener('mousemove', function (event) {
   Y = event.pageY;
 });
 
+window.addEventListener('TouchEvent', function () {
+  let PonyCoordinates = pony.getBoundingClientRect();
+
+  PonyTypeAnimation(PonyCoordinates);
+  PonyMove(PonyCoordinates);
+});
+
 window.addEventListener('click', function () {
   let PonyCoordinates = pony.getBoundingClientRect();
 
+  PonyTypeAnimation(PonyCoordinates);
+  PonyMove(PonyCoordinates);
+});
+
+function PonyTypeAnimation(PonyCoordinates) {
   // Pony Move-Type Animation
-  let distance = PonyCoordinates.left - X;
-  if ((distance > 450) || (distance < -450)) pony.classList = 'pony animation--fly';
-  else if ((distance) <= 450 || (distance >= -450)) pony.classList = 'pony animation--trot';
+  let distanceX = PonyCoordinates.left - X;
+  let distanceY = PonyCoordinates.top - Y;
+  console.log(distanceX)
+  console.log(distanceY)
+
+  if ((distanceX > 450) || (distanceX < -450) || (distanceY > 450) || (distanceY < -450)) pony.classList = 'pony animation--fly';
+  else if ((distanceX <= 450) || (distanceX >= -450) || (distanceY <= 450) || (distanceY >= -450)) pony.classList = 'pony animation--trot';
 
   // Pony Boop Animation
   if (pony.classList.contains('animation--boop-fly','animation--boop')) return
@@ -32,34 +48,36 @@ window.addEventListener('click', function () {
   // Pony Scale Animation
   if (PonyCoordinates.left < X) pony.style.transform = 'scale(-1, 1)';
   else if (PonyCoordinates.left > X) pony.style.transform = 'initial';
-
-  PonyMove(PonyCoordinates);
-});
+}
 
 function PonyMove(PonyCoordinates) {
   let animationTime = '5';
-  style.innerHTML = `
-    .pony {
-      animation: pony-move ${animationTime}s linear 1;
-      animation-fill-mode: forwards;
-      animation-duration: 1s;
-    }
-  `;
-  setTimeout(() => {
-    style.innerHTML += `
-      @keyframes pony-move {
-        from {
-          left: ${PonyCoordinates.left}px;
-          top: ${PonyCoordinates.top}px;
-        }
-        to {
-          left: ${X}px;
-          top: ${Y}px;
-        }
+
+  if (style.textContent == '') {
+    style.innerHTML = `
+      .pony {
+        animation: pony-move ${animationTime}s linear 1;
+        animation-fill-mode: forwards;
+        animation-duration: 1s;
       }
     `;
-    pony.style.left = X + 'px';
-    pony.style.top = Y + 'px';
-    setTimeout(() => {pony.classList = 'pony animation--stand'}, animationTime*200);
-  }, 500);
+    setTimeout(() => {
+      style.innerHTML += `
+        @keyframes pony-move {
+          from {
+            left: ${PonyCoordinates.left}px;
+            top: ${PonyCoordinates.top}px;
+          }
+          to {
+            left: ${X}px;
+            top: ${Y}px;
+          }
+        }
+      `;
+      pony.style.left = X + 'px';
+      pony.style.top = Y + 'px';
+      setTimeout(() => {pony.classList = 'pony animation--stand'; style.innerHTML = '';}, animationTime*200);
+    }, 500);
+  }
+  return
 }
