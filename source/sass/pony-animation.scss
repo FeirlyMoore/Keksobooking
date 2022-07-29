@@ -1,8 +1,8 @@
-$pony-scale--trot: pony-scale 20s steps(1) infinite;
-$pony-move--trot: pony-move 20s linear infinite;
+$pony-scale--trot: pony-scale 20s steps(1);
+$pony-move--trot: pony-move 20s linear;
 
-$pony-scale--fly: pony-scale 10s steps(1) infinite;
-$pony-move--fly: pony-move 10s linear infinite;
+$pony-scale--fly: pony-scale 10s steps(1);
+$pony-move--fly: pony-move 10s linear;
 
 $img--pony-stand: url("../img/pony/gif-pony-stand__axi.gif") no-repeat;
 $img--pony-trot: url("../img/pony/gif-pony-trot__axi.gif") no-repeat;
@@ -24,7 +24,10 @@ $img--pony-boop: url("../img/pony/gif-pony-boop__axi.gif") no-repeat;
   overflow: hidden;
   box-sizing: border-box;
   z-index: 100;
-  animation: $pony-move--fly;
+  // animation: pony-move 5s linear 1;
+  // animation-fill-mode: forwards;
+  // animation-duration: 1s;
+  // animation: $pony-move--fly;
 }
 
 .animation--stand {
