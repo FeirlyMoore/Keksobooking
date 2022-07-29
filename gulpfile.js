@@ -21,7 +21,6 @@ const styles = () => {
     .pipe(sourcemap.init())
     .pipe(sass())
     .pipe(gulp.dest("docs/css"))
-    .pipe(gulp.dest("dist/css"))
     .pipe(gulp.dest("source/css"))
     .pipe(postcss([
       autoprefixer(),
@@ -30,7 +29,6 @@ const styles = () => {
     .pipe(rename("style.min.css"))
     .pipe(sourcemap.write("."))
     .pipe(gulp.dest("docs/css"))
-    .pipe(gulp.dest("dist/css"))
     .pipe(gulp.dest("source/css"))
     .pipe(sync.stream());
 }
@@ -43,18 +41,15 @@ const html = () => {
   return gulp.src("source/*.html")
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest("docs"))
-    .pipe(gulp.dest("dist"));
 }
 
 // Scripts
 
 const scripts = () => {
-  return gulp.src("source/js/script.js")
+  return gulp.src(['source/js/script.js','source/js/**/*.js'])
     .pipe(gulp.dest("docs/js"))
-    .pipe(gulp.dest("dist/js"))
     .pipe(rename("script.min.js"))
     .pipe(gulp.dest("docs/js"))
-    .pipe(gulp.dest("dist/js"))
     .pipe(sync.stream());
 }
 
@@ -73,15 +68,13 @@ const optimizeImages = () => {
       ]
     }))
     .pipe(gulp.dest("docs/img"))
-    .pipe(gulp.dest("dist/img"))
 }
 
 exports.images = optimizeImages;
 
 const copyImages = () => {
-  return gulp.src("source/img/**/*.{png,jpg,svg,webp,avif}")
+  return gulp.src("source/img/**/*.{png,jpg,svg,webp,avif,gif}")
     .pipe(gulp.dest("docs/img"))
-    .pipe(gulp.dest("dist/img"))
 }
 
 exports.images = copyImages;
@@ -89,10 +82,9 @@ exports.images = copyImages;
 // WebP
 
 const createWebp = () => {
-  return gulp.src("source/img/**/*.{jpg,png}")
+  return gulp.src(['source/img/**/*.{jpg,png}','!source/img/pony/**'])
     .pipe(webp({quality: 90}))
     .pipe(gulp.dest("docs/img"))
-    .pipe(gulp.dest("dist/img"))
 }
 
 exports.createWebp = createWebp;
@@ -106,7 +98,6 @@ const sprite = () => {
     }))
     .pipe(rename("sprite.svg"))
     .pipe(gulp.dest("docs/img"))
-    .pipe(gulp.dest("dist/img"));
 }
 
 exports.sprite = sprite;
@@ -124,7 +115,6 @@ const copy = (done) => {
     base: "source"
   })
     .pipe(gulp.dest("docs"))
-    .pipe(gulp.dest("dist"))
   done();
 }
 
@@ -134,7 +124,6 @@ exports.copy = copy;
 
 const clean = () => {
   return del("docs");
-  return del("dist");
 };
 
 // Server
@@ -142,7 +131,7 @@ const clean = () => {
 const server = (done) => {
   sync.init({
     server: {
-      baseDir: "dist"
+      baseDir: "docs"
     },
     host: "192.168.1.71",
     tunnel: true,

@@ -1,0 +1,155 @@
+$pony-scale--trot: pony-scale 20s steps(1) infinite;
+$pony-move--trot: pony-move 20s linear infinite;
+
+$pony-scale--fly: pony-scale 10s steps(1) infinite;
+$pony-move--fly: pony-move 10s linear infinite;
+
+$img--pony-stand: url("../img/pony/gif-pony-stand__axi.gif") no-repeat;
+$img--pony-trot: url("../img/pony/gif-pony-trot__axi.gif") no-repeat;
+$img--pony-fly: url("../img/pony/gif-pony-fly__axi.gif") no-repeat;
+$img--pony-boop-fly: url("../img/pony/gif-pony-boop-fly__axi.gif") no-repeat;
+$img--pony-sit: url("../img/pony/gif-pony-sit__axi.gif") no-repeat;
+$img--pony-boop-sit: url("../img/pony/gif-pony-boop-sit__axi.gif") no-repeat;
+$img--pony-lie: url("../img/pony/gif-pony-lie__axi.gif") no-repeat;
+$img--pony-boop-lie: url("../img/pony/gif-pony-boop-lie__axi.gif") no-repeat;
+$img--pony-boop: url("../img/pony/gif-pony-boop__axi.gif") no-repeat;
+
+
+.pony {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 70px;
+  height: 90px;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 100;
+  animation: $pony-move--fly;
+}
+
+.animation--stand {
+  background: $img--pony-stand;
+  background-position: 2px 2px;
+  background-size: 68px 68px;
+  // transform: scale(-1, 1);
+}
+
+.animation--trot {
+  background: $img--pony-trot;
+  background-position: 0 0;
+  background-size: 70px 75px;
+  // transform: scale(-1, 1);
+  // animation: $pony-move--trot, $pony-scale--trot;
+}
+
+.animation--fly {
+  background: $img--pony-fly;
+  background-position: 0 0;
+  background-size: 70px 85px;
+  // transform: scale(-1, 1);
+  // animation: $pony-move--fly, $pony-scale--fly;
+}
+
+.animation--boop-fly {
+  background: $img--pony-boop-fly;
+  background-position: 0 0;
+  background-size: 73px 85px;
+  // transform: scale(-1, 1);
+}
+
+.animation--boop {
+  background: $img--pony-boop;
+  background-position: 0 0;
+  background-size: 70px 70px;
+  // transform: scale(-1, 1);
+}
+
+.animation--sit {
+  background: $img--pony-sit;
+  background-position: 0 0;
+  background-size: 75px 70px;
+  // transform: scale(-1, 1);
+}
+
+.animation--boop-sit {
+  background: $img--pony-boop-sit;
+  background-position: 0 0;
+  background-size: 74px 70px;
+  // transform: scale(-1, 1);
+}
+
+.animation--lie {
+  background: $img--pony-lie;
+  background-position: 0 0;
+  background-size: 74px 70px;
+  // transform: scale(-1, 1);
+}
+
+.animation--boop-lie {
+  background: $img--pony-boop-lie;
+  background-position: 0 0;
+  background-size: 74px 70px;
+  // transform: scale(-1, 1);
+}
+
+// @keyframes pony-move {
+//   0% {
+//     left: 0%;
+//   }
+
+//   50% {
+//     left: calc(100% - 70px);
+//   }
+
+//   100% {
+//     left: 0%;
+//   }
+// }
+
+@keyframes pony-scale {
+  50% {
+    transform: initial;
+  }
+}
+
+/* Sprite-method */
+
+// $animation--pony-stand: pony-stand 1s steps(24) infinite;
+// $animation--pony-trot: pony-trot 1s steps(21) infinite;
+// $animation--pony-fly: pony-fly 1s steps(20) infinite;
+// $animation--pony-sit: pony-sit 20s linear infinite;
+// $animation--pony-lie: pony-lie 20s linear infinite;
+// $animation--pony-boop: pony-boop 20s linear infinite;
+
+// $img--pony-stand: url("../img/pony/pony-stand__axi.png") no-repeat;
+// $img--pony-trot: url("../img/pony/pony-trot__axi.png") no-repeat;
+// $img--pony-fly: url("../img/pony/pony-fly__axi.png") no-repeat;
+// $img--pony-sit: url("../img/pony/pony-sit__axi") no-repeat;
+// $img--pony-lie: url("../img/pony/pony-lie__axi") no-repeat;
+// $img--pony-boop: url("../img/pony/pony-boop__axi.png") no-repeat;
+
+// .pony-animation {
+//   background: url("../img/pony/test.png") no-repeat;
+//   background-position: 0 0;
+//   background-size: 1370px 70px;
+//   transform: scale(-1, 1);
+//   animation: $animation--pony-trot, $pony-move, $pony-scale;
+// }
+
+// @keyframes pony-stand {
+//   100% {
+//     background-position: -1553px 0;
+//   }
+// }
+
+// @keyframes pony-trot {
+//   100% {
+//     background-position: -1370px 0;
+//   }
+// }
+
+// @keyframes pony-fly {
+//   100% {
+//     background-position: -1408px 0;
+//   }
+// }
