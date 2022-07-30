@@ -4,20 +4,17 @@ let pony = document.querySelector('.pony');
 let style = document.querySelector('style');
 let X = 0, Y = 0;
 
-window.addEventListener('mousemove', function (event) {
+window.addEventListener('click', (event) => {
   event = window.event || event;
   X = event.pageX;
   Y = event.pageY;
-});
-
-window.addEventListener('click', function () {
   let ponyCoordinates = pony.getBoundingClientRect();
   PonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
 });
 
 /* For touch devices */
-window.addEventListener('touchstart', function () {
+window.addEventListener('touchstart', () => {
   let ponyCoordinates = pony.getBoundingClientRect();
   PonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
@@ -28,7 +25,7 @@ function PonyTypeAnimation(ponyCoordinates) {
   // Pony Move-Type Animation
   {
     let distanceX = ponyCoordinates.left - X;
-    let distanceY = ponyCoordinates.top - Y;
+    let distanceY = ponyCoordinates.top - Y + window.scrollY;
     let actionDistance = 450;
 
     switch (true) {
@@ -86,7 +83,7 @@ function PonyMove(ponyCoordinates) {
         @keyframes pony-move {
           from {
             left: ${ponyCoordinates.left}px;
-            top: ${ponyCoordinates.top}px;
+            top: ${ponyCoordinates.top + window.scrollY}px;
           }
           to {
             left: ${X}px;
