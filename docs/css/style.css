@@ -365,7 +365,9 @@ th {
   overflow: hidden;
   box-sizing: border-box;
   transform: scale(-1, 1);
-  z-index: 100; }
+  z-index: 100;
+  pointer-events: none;
+  user-select: none; }
 
 .animation--stand {
   background: url("../img/pony/gif-pony-stand__axi.gif") no-repeat;
