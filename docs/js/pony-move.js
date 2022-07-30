@@ -30,6 +30,7 @@ function PonyTypeAnimation(ponyCoordinates) {
     let distanceX = ponyCoordinates.left - X;
     let distanceY = ponyCoordinates.top - Y;
     let actionDistance = 450;
+
     switch (true) {
       case (distanceX > actionDistance) || (distanceX < -actionDistance):
       case (distanceY > actionDistance) || (distanceY < -actionDistance):
