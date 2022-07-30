@@ -77,8 +77,8 @@ function PonyMove(PonyCoordinates) {
       }
     `;
     /*
-    Фреймы добавляем с задержкой в 500ms, иначе они не успеют обработаться и примениться.
-    Frames are added with a delay of 500 ms, otherwise they will not have time to be processed and applied.
+    Фреймы добавляем с задержкой в 150ms, иначе они не успеют обработаться и примениться.
+    Frames are added with a delay of 150ms, otherwise they will not have time to be processed and applied.
     */
     setTimeout(() => {
       style.innerHTML += `
@@ -104,7 +104,7 @@ function PonyMove(PonyCoordinates) {
       At the end of the animation, we bring it to the default values and clean the "style" tag from garbage.
       */
       setTimeout(() => {pony.classList = 'pony animation--stand'; style.innerHTML = '';}, animationTime*200);
-    }, 500);
+    }, 150);
   }
   return
 }
