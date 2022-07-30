@@ -11,26 +11,25 @@ window.addEventListener('mousemove', function (event) {
 });
 
 window.addEventListener('click', function () {
-  let PonyCoordinates = pony.getBoundingClientRect();
-  PonyTypeAnimation(PonyCoordinates);
-  PonyMove(PonyCoordinates);
+  let ponyCoordinates = pony.getBoundingClientRect();
+  PonyTypeAnimation(ponyCoordinates);
+  PonyMove(ponyCoordinates);
 });
 
 /* For touch devices */
 window.addEventListener('touchstart', function () {
-  let PonyCoordinates = pony.getBoundingClientRect();
-  PonyTypeAnimation(PonyCoordinates);
-  PonyMove(PonyCoordinates);
+  let ponyCoordinates = pony.getBoundingClientRect();
+  PonyTypeAnimation(ponyCoordinates);
+  PonyMove(ponyCoordinates);
 });
 
 /* PonyTypeAnimation */
-function PonyTypeAnimation(PonyCoordinates) {
+function PonyTypeAnimation(ponyCoordinates) {
   // Pony Move-Type Animation
   {
-    let distanceX = PonyCoordinates.left - X;
-    let distanceY = PonyCoordinates.top - Y;
+    let distanceX = ponyCoordinates.left - X;
+    let distanceY = ponyCoordinates.top - Y;
     let actionDistance = 450;
-
     switch (true) {
       case (distanceX > actionDistance) || (distanceX < -actionDistance):
       case (distanceY > actionDistance) || (distanceY < -actionDistance):
@@ -58,12 +57,12 @@ function PonyTypeAnimation(PonyCoordinates) {
   }
 
   // Pony Scale Animation
-  if (PonyCoordinates.left < X) pony.style.transform = 'scale(-1, 1)';
-  else if (PonyCoordinates.left > X) pony.style.transform = 'initial';
+  if (ponyCoordinates.left < X) pony.style.transform = 'scale(-1, 1)';
+  else if (ponyCoordinates.left > X) pony.style.transform = 'initial';
 }
 
 /* PonyMove */
-function PonyMove(PonyCoordinates) {
+function PonyMove(ponyCoordinates) {
   let animationTime = '5';
   /*
   Добавляем в тэг "style" анимацию для блока "pony".
@@ -85,8 +84,8 @@ function PonyMove(PonyCoordinates) {
       style.innerHTML += `
         @keyframes pony-move {
           from {
-            left: ${PonyCoordinates.left}px;
-            top: ${PonyCoordinates.top}px;
+            left: ${ponyCoordinates.left}px;
+            top: ${ponyCoordinates.top}px;
           }
           to {
             left: ${X}px;
