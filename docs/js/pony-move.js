@@ -29,14 +29,15 @@ function PonyTypeAnimation(PonyCoordinates) {
   {
     let distanceX = PonyCoordinates.left - X;
     let distanceY = PonyCoordinates.top - Y;
+    let actionDistance = 450;
 
     switch (true) {
-      case (distanceX > 450) || (distanceX < -450):
-      case (distanceY > 450) || (distanceY < -450):
+      case (distanceX > actionDistance) || (distanceX < -actionDistance):
+      case (distanceY > actionDistance) || (distanceY < -actionDistance):
         pony.classList = 'pony animation--fly'
       break;
-      case (distanceX <= 450) || (distanceX >= -450):
-      case (distanceY <= 450) || (distanceY >= -450):
+      case (distanceX <= actionDistance) || (distanceX >= -actionDistance):
+      case (distanceY <= actionDistance) || (distanceY >= -actionDistance):
         pony.classList = 'pony animation--trot'
       break;
     }
