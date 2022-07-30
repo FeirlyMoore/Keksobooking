@@ -1,3 +1,5 @@
+"use strict";
+
 let pony = document.querySelector('.pony');
 let style = document.querySelector('style');
 let X = 0, Y = 0;
@@ -8,41 +10,50 @@ window.addEventListener('mousemove', function (event) {
   Y = event.pageY;
 });
 
-window.addEventListener('TouchEvent', function () {
-  let PonyCoordinates = pony.getBoundingClientRect();
-
-  PonyTypeAnimation(PonyCoordinates);
-  PonyMove(PonyCoordinates);
-});
-
 window.addEventListener('click', function () {
   let PonyCoordinates = pony.getBoundingClientRect();
-
   PonyTypeAnimation(PonyCoordinates);
   PonyMove(PonyCoordinates);
 });
 
+/* For touch devices */
+window.addEventListener('touchstart', function () {
+  let PonyCoordinates = pony.getBoundingClientRect();
+  PonyTypeAnimation(PonyCoordinates);
+  PonyMove(PonyCoordinates);
+});
+
+/* PonyTypeAnimation */
 function PonyTypeAnimation(PonyCoordinates) {
   // Pony Move-Type Animation
-  let distanceX = PonyCoordinates.left - X;
-  let distanceY = PonyCoordinates.top - Y;
-  console.log(distanceX)
-  console.log(distanceY)
+  {
+    let distanceX = PonyCoordinates.left - X;
+    let distanceY = PonyCoordinates.top - Y;
 
-  if ((distanceX > 450) || (distanceX < -450) || (distanceY > 450) || (distanceY < -450)) pony.classList = 'pony animation--fly';
-  else if ((distanceX <= 450) || (distanceX >= -450) || (distanceY <= 450) || (distanceY >= -450)) pony.classList = 'pony animation--trot';
+    switch (true) {
+      case (distanceX > 450) || (distanceX < -450):
+      case (distanceY > 450) || (distanceY < -450):
+        pony.classList = 'pony animation--fly'
+      break;
+      case (distanceX <= 450) || (distanceX >= -450):
+      case (distanceY <= 450) || (distanceY >= -450):
+        pony.classList = 'pony animation--trot'
+      break;
+    }
+  }
 
   // Pony Boop Animation
-  if (pony.classList.contains('animation--boop-fly','animation--boop')) return
-  else if (pony.classList.contains('animation--fly')) {
-
-    pony.classList.remove('animation--fly');
-    pony.classList.add('animation--boop-fly');
-  }
-  else if(pony.classList.contains('animation--stand')) {
-
-    pony.classList.remove('animation--stand');
-    pony.classList.add('animation--boop');
+  switch (true) {
+    case pony.classList.contains('animation--boop-fly','animation--boop'):
+      return;
+    case pony.classList.contains('animation--fly'):
+      pony.classList.remove('animation--fly');
+      pony.classList.add('animation--boop-fly');
+    break;
+    case pony.classList.contains('animation--stand'):
+      pony.classList.remove('animation--stand');
+      pony.classList.add('animation--boop');
+    break;
   }
 
   // Pony Scale Animation
@@ -50,9 +61,13 @@ function PonyTypeAnimation(PonyCoordinates) {
   else if (PonyCoordinates.left > X) pony.style.transform = 'initial';
 }
 
+/* PonyMove */
 function PonyMove(PonyCoordinates) {
   let animationTime = '5';
-
+  /*
+  Добавляем в тэг "style" анимацию для блока "pony".
+  We add animation for the "pony" block to the "style" tag.
+  */
   if (style.textContent == '') {
     style.innerHTML = `
       .pony {
@@ -61,6 +76,10 @@ function PonyMove(PonyCoordinates) {
         animation-duration: 1s;
       }
     `;
+    /*
+    Фреймы добавляем с задержкой в 500ms, иначе они не успеют обработаться и примениться.
+    Frames are added with a delay of 500 ms, otherwise they will not have time to be processed and applied.
+    */
     setTimeout(() => {
       style.innerHTML += `
         @keyframes pony-move {
@@ -74,10 +93,20 @@ function PonyMove(PonyCoordinates) {
           }
         }
       `;
+      /*
+      Указываем конечные координаты ( они-же будут начальными при следующей итерации анимации ).
+      We specify the final coordinates ( they will also be the initial ones at the next iteration of the animation ).
+      */
       pony.style.left = X + 'px';
       pony.style.top = Y + 'px';
+      /*
+      По окончании анимации приводим к дефолтным значениям и отчищаем тэг "style" от мусора.
+      At the end of the animation, we bring it to the default values and clean the "style" tag from garbage.
+      */
       setTimeout(() => {pony.classList = 'pony animation--stand'; style.innerHTML = '';}, animationTime*200);
     }, 500);
   }
   return
 }
+
+// <!DOCTYPE Liky>
