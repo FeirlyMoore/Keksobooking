@@ -1,9 +1,9 @@
 # Личный проект «Keksobooking»
-
-* Студент: [Feirly Moore](https://htmlacademy.ru/profile/redfox39). 
+* You can visit the deployed app, at [https://feirlymoore.github.io/Keksobooking/](https://feirlymoore.github.io/Keksobooking/).
+* Студент: [Feirly Moore](https://htmlacademy.ru/profile/redfox39).
 
 <a href="https://vk.com/redfox_39"><img align="center" width="200" height="200" alt="Likiz inc." src="https://github.com/FeirlyMoore/Sedona-React/blob/master/public/img/logo/8li.svg"></a>
-## `<!DOCTYPE Liky>`
+## `<!DOCTYPE Liky>` [REDFOX39 inc.](https://github.com/REDFOX39-inc)
 * Наставник: `Кекс`.
 
 ---
