@@ -2,20 +2,21 @@
 
 let pony = document.querySelector('.pony');
 let style = document.querySelector('style');
+let ponyCoordinates = 0;
 let X = 0, Y = 0;
 
 window.addEventListener('click', (event) => {
   event = window.event || event;
   X = event.pageX;
   Y = event.pageY;
-  let ponyCoordinates = pony.getBoundingClientRect();
+  ponyCoordinates = pony.getBoundingClientRect();
   PonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
 });
 
 /* For touch devices */
 window.addEventListener('touchstart', () => {
-  let ponyCoordinates = pony.getBoundingClientRect();
+  ponyCoordinates = pony.getBoundingClientRect();
   PonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
 });
