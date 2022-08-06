@@ -2,7 +2,7 @@
 
 let pony = document.querySelector('.pony');
 let style = document.querySelector('style');
-let hasWings = false;
+let hasWings = true;
 let ponyCoordinates = 0;
 let X = 0, Y = 0;
 
