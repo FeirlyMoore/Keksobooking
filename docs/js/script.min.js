@@ -2,6 +2,7 @@
 
 let pony = document.querySelector('.pony');
 let style = document.querySelector('style');
+let hasWings = false;
 let ponyCoordinates = 0;
 let X = 0, Y = 0;
 
@@ -15,7 +16,7 @@ window.addEventListener('click', (event) => {
 });
 
 /* For touch devices */
-window.addEventListener('touchstart', () => {
+window.addEventListener('touchend', () => {
   ponyCoordinates = pony.getBoundingClientRect();
   PonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
@@ -29,16 +30,19 @@ function PonyTypeAnimation(ponyCoordinates) {
     let distanceY = ponyCoordinates.top - Y + window.scrollY;
     let actionDistance = 450;
 
-    switch (true) {
-      case (distanceX > actionDistance) || (distanceX < -actionDistance):
-      case (distanceY > actionDistance) || (distanceY < -actionDistance):
-        pony.classList = 'pony animation--fly'
-      break;
-      case (distanceX <= actionDistance) || (distanceX >= -actionDistance):
-      case (distanceY <= actionDistance) || (distanceY >= -actionDistance):
-        pony.classList = 'pony animation--trot'
-      break;
+    if (hasWings == true) {
+      switch (true) {
+        case (distanceX > actionDistance) || (distanceX < -actionDistance):
+        case (distanceY > actionDistance) || (distanceY < -actionDistance):
+          pony.classList = 'pony animation--fly'
+        break;
+        case (distanceX <= actionDistance) || (distanceX >= -actionDistance):
+        case (distanceY <= actionDistance) || (distanceY >= -actionDistance):
+          pony.classList = 'pony animation--trot'
+        break;
+      }
     }
+    else pony.classList = 'pony animation--trot';
   }
 
   // Pony Boop Animation
