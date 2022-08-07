@@ -1,7 +1,7 @@
 "use strict";
 
-function GetRandomNumber(startValue, endValue, fixedPointCount) {
-  let randomNumber = Math.random() * (endValue - startValue) + startValue;
+function GetRandomNumber(min, max, fixedPointCount) {
+  let randomNumber = Math.random() * (max - min) + min;
 
   return randomNumber.toFixed(fixedPointCount);
 }
