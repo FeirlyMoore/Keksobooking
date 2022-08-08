@@ -13,11 +13,11 @@ window.addEventListener('click', (event) => {
 });
 
 /* For touch devices */
-// window.addEventListener('touchend', () => {
-//   GetPonyCoordinates(event);
-//   GetPonyTypeAnimation(ponyCoordinates);
-//   PonyMove(ponyCoordinates);
-// });
+window.addEventListener('touchend', () => {
+  GetPonyCoordinates(event);
+  GetPonyTypeAnimation(ponyCoordinates);
+  PonyMove(ponyCoordinates);
+});
 
 function GetPonyCoordinates(event) {
   X = event.pageX;
