@@ -7,23 +7,26 @@ let ponyCoordinates = 0;
 let X = 0, Y = 0;
 
 window.addEventListener('click', (event) => {
-  event = window.event || event;
-  X = event.pageX;
-  Y = event.pageY;
-  ponyCoordinates = pony.getBoundingClientRect();
-  PonyTypeAnimation(ponyCoordinates);
+  GetPonyCoordinates(event);
+  GetPonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
 });
 
 /* For touch devices */
-window.addEventListener('touchend', () => {
+// window.addEventListener('touchend', () => {
+//   GetPonyCoordinates(event);
+//   GetPonyTypeAnimation(ponyCoordinates);
+//   PonyMove(ponyCoordinates);
+// });
+
+function GetPonyCoordinates(event) {
+  X = event.pageX;
+  Y = event.pageY;
   ponyCoordinates = pony.getBoundingClientRect();
-  PonyTypeAnimation(ponyCoordinates);
-  PonyMove(ponyCoordinates);
-});
+}
 
 /* PonyTypeAnimation */
-function PonyTypeAnimation(ponyCoordinates) {
+function GetPonyTypeAnimation(ponyCoordinates) {
   // Pony Move-Type Animation
   {
     let distanceX = ponyCoordinates.left - X;
