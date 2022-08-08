@@ -10,7 +10,6 @@ window.addEventListener('click', (event) => {
   GetPonyCoordinates(event);
   GetPonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
-  console.log(X,Y,ponyCoordinates.top)
 });
 
 /* For touch devices */
@@ -18,9 +17,6 @@ window.addEventListener('touchend', (event) => {
   GetPonyCoordinates(event);
   GetPonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
-  alert(X)
-  alert(Y)
-  alert(ponyCoordinates.top)
 });
 
 function GetPonyCoordinates(event) {
