@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 let pony = document.querySelector('.pony');
 let style = document.querySelector('style');
@@ -6,14 +6,14 @@ let hasWings = true;
 let ponyCoordinates = 0;
 let X = 0, Y = 0;
 
-window.addEventListener('click', (event) => {
+this.addEventListener('click', (event) => {
   GetPonyCoordinates(event);
   GetPonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
 });
 
 /* For touch devices */
-window.addEventListener('touchend', (event) => {
+this.addEventListener('touchend', (event) => {
   GetPonyCoordinates(event);
   GetPonyTypeAnimation(ponyCoordinates);
   PonyMove(ponyCoordinates);
@@ -38,11 +38,11 @@ function GetPonyTypeAnimation(ponyCoordinates) {
         case (distanceX > actionDistance) || (distanceX < -actionDistance):
         case (distanceY > actionDistance) || (distanceY < -actionDistance):
           pony.classList = 'pony animation--fly'
-        break;
+          break;
         case (distanceX <= actionDistance) || (distanceX >= -actionDistance):
         case (distanceY <= actionDistance) || (distanceY >= -actionDistance):
           pony.classList = 'pony animation--trot'
-        break;
+          break;
       }
     }
     else pony.classList = 'pony animation--trot';
@@ -55,11 +55,11 @@ function GetPonyTypeAnimation(ponyCoordinates) {
     case pony.classList.contains('animation--fly'):
       pony.classList.remove('animation--fly');
       pony.classList.add('animation--boop-fly');
-    break;
+      break;
     case pony.classList.contains('animation--stand'):
       pony.classList.remove('animation--stand');
       pony.classList.add('animation--boop');
-    break;
+      break;
   }
 
   // Pony Scale Animation
@@ -74,6 +74,7 @@ function PonyMove(ponyCoordinates) {
   Добавляем в тэг "style" анимацию для блока "pony".
   We add animation for the "pony" block to the "style" tag.
   */
+
   if (style.textContent == '') {
     style.innerHTML = `
       .pony {
@@ -112,6 +113,7 @@ function PonyMove(ponyCoordinates) {
       setTimeout(() => {pony.classList = 'pony animation--stand'; style.innerHTML = '';}, animationTime*200);
     }, 150);
   }
+
   return
 }
 
