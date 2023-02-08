@@ -1,7 +1,45 @@
-// 'use strict';
+'use strict';
 
 const OFFERS_COUNT = 10
 let verificationArr = [];
+
+const PRICE = {
+  MIN: 1000,
+  MAX: 5000,
+};
+
+const TYPE = ['Palace', 'Flat', 'House', 'Bungalow'];
+
+const ROOMS = {
+  MIN: 1,
+  MAX: 10,
+};
+
+const GUESTS = {
+  MIN: 1,
+  MAX: 10,
+};
+
+const CHECKIN = [
+  '12:00',
+  '13:00',
+  '14:00',
+];
+
+const CHECKOUT = [
+  '12:00',
+  '13:00',
+  '14:00',
+];
+
+const FEATURES = [
+  'Wifi',
+  'Dishwasher',
+  'Parking',
+  'Washer',
+  'elevator',
+  'conditioner',
+];
 
 const TITLES = [
   'Сдам квартиру',
@@ -13,13 +51,7 @@ const TITLES = [
   'Сдам гараж',
   'Сдам самолёт',
   'Сдам жену в рабство',
-  'Выпью с вами пива'];
-
-const HOUSE_TYPE= [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
+  'Выпью с вами пива',
 ];
 
 const locations = {
@@ -53,6 +85,10 @@ function GetRandomNumber(min = 0, max = 1, fixedPointCount = 0) {
   }
 }
 
+function GetRandomArrElem(arr) {
+  return arr[GetRandomNumber(0, arr.length - 1)];
+}
+
 function CreateOffer() {
   return {
     author: CreateAuthor(),
@@ -66,24 +102,24 @@ function CreateAuthor() {
   return obj
 }
 
-function CreateDescription() {
-  const obj = new Object();
+// function CreateDescription() {
+//   const obj = new Object();
 
-  obj.title = TITLES[GetRandomNumber(0, TITLES.length - 1)];
-  obj.address = [locations.x, locations.y];
-  obj.price = GetRandomNumber(1000, 20000);
-  obj.type = HOUSE_TYPE[GetRandomNumber(0, HOUSE_TYPE.length -1)];
-  obj.rooms = '';
-  obj.guests = '';
-  obj.checkin = '';
-  obj.checkout = '';
-  obj.features = '';
-  obj.description = '';
-  obj.photos = '';
-  obj.location = '';
+//   obj.title = GetRandomArrElem(TITLES);
+//   obj.address = [locations.x, locations.y];
+//   obj.price = GetRandomNumber(1000, 20000);
+//   obj.type = GetRandomArrElem(TYPE);
+//   obj.rooms = GetRandomNumber(ROOMS.MIN, ROOMS.MAX);
+//   obj.guests = GetRandomNumber(GUESTS.MIN, GUESTS.MAX);
+//   obj.checkin = GetRandomArrElem(CHECKIN);
+//   obj.checkout = GetRandomArrElem(CHECKOUT);
+//   obj.features = GetRandomArrElem(FEATURES);
+//   obj.description = '';
+//   obj.photos = '';
+//   obj.location = '';
 
-  return obj
-}
+//   return obj
+// }
 
 // Структура каждого объекта должна быть следующей:
 
